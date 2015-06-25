@@ -1,18 +1,16 @@
 package io.swagger.client.api
 
-import io.swagger.client.model.UnitCategory
-import io.swagger.client.model.Unit
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
 import scala.concurrent.duration._
 import collection.mutable
 
-class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+class ConnectApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def unitCategoriesGet()(implicit reader: ClientResponseReader[UnitCategory]): Future[UnitCategory] = {
+  def v1Connect.jsGet(t: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
-    val path = (addFmt("/unitCategories"))
+    val path = (addFmt("/v1/connect.js"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -21,6 +19,7 @@ class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
     
 
     
+    if(t != null)   queryParams += "t" -> t.toString
 
     
 
@@ -31,11 +30,9 @@ class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
   }
 
   
-  def unitsGet(unitName: String,
-      abbreviatedUnitName: String,
-      categoryName: String)(implicit reader: ClientResponseReader[List[Unit]]): Future[List[Unit]] = {
+  def v1ConnectMobileGet(t: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
-    val path = (addFmt("/units"))
+    val path = (addFmt("/v1/connect/mobile"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -44,9 +41,7 @@ class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
     
 
     
-    if(unitName != null)   queryParams += "unitName" -> unitName.toString
-    if(abbreviatedUnitName != null)   queryParams += "abbreviatedUnitName" -> abbreviatedUnitName.toString
-    if(categoryName != null)   queryParams += "categoryName" -> categoryName.toString
+    if(t != null)   queryParams += "t" -> t.toString
 
     
 

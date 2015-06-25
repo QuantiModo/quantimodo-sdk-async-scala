@@ -1,6 +1,7 @@
 package io.swagger.client.api
 
-import com.wordnik.swagger.client._
+import io.swagger.client.model.Pairs
+import io.swagger.client._
 import scala.concurrent.{ Future, Await }
 import scala.concurrent.duration._
 import collection.mutable
@@ -9,15 +10,15 @@ class PairsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
 
   
   def pairsGet(cause: String,
-      effect: String,
-      duration: String,
-      delay: String,
-      startTime: String,
-      endTime: String,
       causeSource: String,
-      effectSource: String,
       causeUnit: String,
-      effectUnit: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+      delay: String,
+      duration: String,
+      effect: String,
+      effectSource: String,
+      effectUnit: String,
+      endTime: String,
+      startTime: String)(implicit reader: ClientResponseReader[List[Pairs]]): Future[List[Pairs]] = {
     // create path and map variables
     val path = (addFmt("/pairs"))
 
@@ -29,15 +30,15 @@ class PairsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
 
     
     if(cause != null)   queryParams += "cause" -> cause.toString
-    if(effect != null)   queryParams += "effect" -> effect.toString
-    if(duration != null)   queryParams += "duration" -> duration.toString
-    if(delay != null)   queryParams += "delay" -> delay.toString
-    if(startTime != null)   queryParams += "startTime" -> startTime.toString
-    if(endTime != null)   queryParams += "endTime" -> endTime.toString
     if(causeSource != null)   queryParams += "causeSource" -> causeSource.toString
-    if(effectSource != null)   queryParams += "effectSource" -> effectSource.toString
     if(causeUnit != null)   queryParams += "causeUnit" -> causeUnit.toString
+    if(delay != null)   queryParams += "delay" -> delay.toString
+    if(duration != null)   queryParams += "duration" -> duration.toString
+    if(effect != null)   queryParams += "effect" -> effect.toString
+    if(effectSource != null)   queryParams += "effectSource" -> effectSource.toString
     if(effectUnit != null)   queryParams += "effectUnit" -> effectUnit.toString
+    if(endTime != null)   queryParams += "endTime" -> endTime.toString
+    if(startTime != null)   queryParams += "startTime" -> startTime.toString
 
     
 

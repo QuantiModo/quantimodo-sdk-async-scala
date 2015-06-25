@@ -2,7 +2,9 @@ package io.swagger.client.api
 
 import io.swagger.client.model.MeasurementSource
 import io.swagger.client.model.Measurement
-import com.wordnik.swagger.client._
+import io.swagger.client.model.MeasurementSet
+import io.swagger.client.model.MeasurementRange
+import io.swagger.client._
 import scala.concurrent.{ Future, Await }
 import scala.concurrent.duration._
 import collection.mutable
@@ -10,7 +12,7 @@ import collection.mutable
 class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def measurementSourcesGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def measurementSourcesGet()(implicit reader: ClientResponseReader[MeasurementSource]): Future[MeasurementSource] = {
     // create path and map variables
     val path = (addFmt("/measurementSources"))
 
@@ -31,7 +33,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def measurementSourcesPost(Measurements: List[MeasurementSource])(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[List[MeasurementSource]]): Future[Unit] = {
+  def measurementSourcesPost(name: MeasurementSource)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[MeasurementSource]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/measurementSources"))
 
@@ -45,7 +47,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Measurements))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(name))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -57,7 +59,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
       startTime: String,
       endTime: String,
       groupingWidth: Integer,
-      groupingTimezone: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+      groupingTimezone: String)(implicit reader: ClientResponseReader[Measurement]): Future[Measurement] = {
     // create path and map variables
     val path = (addFmt("/measurements"))
 
@@ -84,7 +86,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def measurementsV2Post(Measurements: List[Measurement])(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[List[Measurement]]): Future[Unit] = {
+  def measurementsV2Post(measurements: MeasurementSet)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[MeasurementSet]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/measurements/v2"))
 
@@ -98,7 +100,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Measurements))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(measurements))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -106,7 +108,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
   
   def measurementsRangeGet(sources: String,
-      user: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+      user: Integer)(implicit reader: ClientResponseReader[MeasurementRange]): Future[MeasurementRange] = {
     // create path and map variables
     val path = (addFmt("/measurementsRange"))
 

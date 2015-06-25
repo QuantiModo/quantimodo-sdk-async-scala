@@ -1,8 +1,10 @@
 package io.swagger.client.api
 
-import io.swagger.client.model.VariableUserSettings
 import io.swagger.client.model.Variable
-import com.wordnik.swagger.client._
+import io.swagger.client.model.VariableCategory
+import io.swagger.client.model.VariableUserSettings
+import io.swagger.client.model.VariablesNew
+import io.swagger.client._
 import scala.concurrent.{ Future, Await }
 import scala.concurrent.duration._
 import collection.mutable
@@ -10,7 +12,35 @@ import collection.mutable
 class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def publicVariablesGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def correlationsPost(cause: String,
+      effect: String,
+      correlationcoefficient: String,
+      vote: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/correlations"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    
+
+    
+    if(cause != null)   queryParams += "cause" -> cause.toString
+    if(effect != null)   queryParams += "effect" -> effect.toString
+    if(correlationcoefficient != null)   queryParams += "correlationcoefficient" -> correlationcoefficient.toString
+    if(vote != null)   queryParams += "vote" -> vote.toString
+
+    
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  
+  def publicVariablesGet()(implicit reader: ClientResponseReader[Variable]): Future[Variable] = {
     // create path and map variables
     val path = (addFmt("/public/variables"))
 
@@ -32,7 +62,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
   
   def publicVariablesSearchSearchGet(search: String,
-      effectOrCause: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+      effectOrCause: String)(implicit reader: ClientResponseReader[Variable]): Future[Variable] = {
     // create path and map variables
     val path = (addFmt("/public/variables/search/{search}")
         replaceAll ("\\{" + "search" + "\\}",search.toString))
@@ -55,7 +85,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
   }
 
   
-  def variableCategoriesGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def variableCategoriesGet()(implicit reader: ClientResponseReader[List[VariableCategory]]): Future[List[VariableCategory]] = {
     // create path and map variables
     val path = (addFmt("/variableCategories"))
 
@@ -76,7 +106,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
   }
 
   
-  def variableUserSettingsPost(sharingData: List[VariableUserSettings])(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[List[VariableUserSettings]]): Future[Unit] = {
+  def variableUserSettingsPost(sharingData: VariableUserSettings)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[VariableUserSettings]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/variableUserSettings"))
 
@@ -98,7 +128,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
   
   def variablesGet(userId: Integer,
-      categoryName: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+      categoryName: String)(implicit reader: ClientResponseReader[Variable]): Future[Variable] = {
     // create path and map variables
     val path = (addFmt("/variables"))
 
@@ -121,7 +151,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
   }
 
   
-  def variablesPost(variableName: List[Variable])(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[List[Variable]]): Future[Unit] = {
+  def variablesPost(variableName: VariablesNew)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[VariablesNew]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/variables"))
 
@@ -146,7 +176,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
       categoryName: String,
       source: String,
       limit: Integer,
-      offset: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+      offset: Integer)(implicit reader: ClientResponseReader[List[Variable]]): Future[List[Variable]] = {
     // create path and map variables
     val path = (addFmt("/variables/search/{search}")
         replaceAll ("\\{" + "search" + "\\}",search.toString))
@@ -172,8 +202,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
   }
 
   
-  def variablesVariableNameGet(variableName: String,
-      categoryName: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def variablesVariableNameGet(variableName: String)(implicit reader: ClientResponseReader[Variable]): Future[Variable] = {
     // create path and map variables
     val path = (addFmt("/variables/{variableName}")
         replaceAll ("\\{" + "variableName" + "\\}",variableName.toString))
@@ -185,7 +214,6 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
     
 
     
-    if(categoryName != null)   queryParams += "categoryName" -> categoryName.toString
 
     
 
