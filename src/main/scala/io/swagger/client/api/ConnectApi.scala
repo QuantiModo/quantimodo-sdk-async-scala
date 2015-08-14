@@ -8,7 +8,8 @@ import collection.mutable
 class ConnectApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def v1Connect.jsGet(t: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def v1Connect.jsGet(t: Option[String] = None
+      )(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/v1/connect.js"))
 
@@ -18,8 +19,7 @@ class ConnectApi(client: TransportClient, config: SwaggerConfig) extends ApiClie
 
     
 
-    
-    if(t != null)   queryParams += "t" -> t.toString
+    if(t != null) t.foreach { v => queryParams += "t" -> v.toString }
 
     
 

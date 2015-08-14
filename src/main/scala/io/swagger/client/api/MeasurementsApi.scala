@@ -55,11 +55,15 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
   
   def measurementsGet(variableName: String,
-      unit: String,
-      startTime: String,
-      endTime: String,
-      groupingWidth: Integer,
-      groupingTimezone: String)(implicit reader: ClientResponseReader[Measurement]): Future[Measurement] = {
+      unit: Option[String] = None,
+      startTime: Option[String] = None,
+      endTime: Option[String] = None,
+      groupingWidth: Option[Integer] = None,
+      groupingTimezone: Option[String] = None,
+      limit: Option[Integer] = None,
+      offset: Option[Integer] = None,
+      sort: Option[Integer] = None
+      )(implicit reader: ClientResponseReader[Measurement]): Future[Measurement] = {
     // create path and map variables
     val path = (addFmt("/measurements"))
 
@@ -70,12 +74,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
     
 
     
-    if(variableName != null)   queryParams += "variableName" -> variableName.toString
-    if(unit != null)   queryParams += "unit" -> unit.toString
-    if(startTime != null)   queryParams += "startTime" -> startTime.toString
-    if(endTime != null)   queryParams += "endTime" -> endTime.toString
-    if(groupingWidth != null)   queryParams += "groupingWidth" -> groupingWidth.toString
-    if(groupingTimezone != null)   queryParams += "groupingTimezone" -> groupingTimezone.toString
+    if(variableName != null)   queryParams += "variableName" -> variableName.toStringif(unit != null) unit.foreach { v => queryParams += "unit" -> v.toString }if(startTime != null) startTime.foreach { v => queryParams += "startTime" -> v.toString }if(endTime != null) endTime.foreach { v => queryParams += "endTime" -> v.toString }if(groupingWidth != null) groupingWidth.foreach { v => queryParams += "groupingWidth" -> v.toString }if(groupingTimezone != null) groupingTimezone.foreach { v => queryParams += "groupingTimezone" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -107,8 +106,9 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def measurementsRangeGet(sources: String,
-      user: Integer)(implicit reader: ClientResponseReader[MeasurementRange]): Future[MeasurementRange] = {
+  def measurementsRangeGet(sources: Option[String] = None,
+      user: Option[Integer] = None
+      )(implicit reader: ClientResponseReader[MeasurementRange]): Future[MeasurementRange] = {
     // create path and map variables
     val path = (addFmt("/measurementsRange"))
 
@@ -118,9 +118,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
-    if(sources != null)   queryParams += "sources" -> sources.toString
-    if(user != null)   queryParams += "user" -> user.toString
+    if(sources != null) sources.foreach { v => queryParams += "sources" -> v.toString }if(user != null) user.foreach { v => queryParams += "user" -> v.toString }
 
     
 

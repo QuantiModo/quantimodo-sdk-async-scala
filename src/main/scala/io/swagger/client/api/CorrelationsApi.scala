@@ -3,6 +3,7 @@ package io.swagger.client.api
 import io.swagger.client.model.Correlation
 import io.swagger.client.model.PostCorrelation
 import io.swagger.client.model.JsonErrorResponse
+import io.swagger.client.model.CommonResponse
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
 import scala.concurrent.duration._
@@ -11,8 +12,12 @@ import collection.mutable
 class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def correlationsGet(effect: String,
-      cause: String)(implicit reader: ClientResponseReader[List[Correlation]]): Future[List[Correlation]] = {
+  def correlationsGet(effect: Option[String] = None,
+      cause: Option[String] = None,
+      limit: Option[Integer] = None,
+      offset: Option[Integer] = None,
+      sort: Option[Integer] = None
+      )(implicit reader: ClientResponseReader[List[Correlation]]): Future[List[Correlation]] = {
     // create path and map variables
     val path = (addFmt("/correlations"))
 
@@ -22,9 +27,7 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
-    if(effect != null)   queryParams += "effect" -> effect.toString
-    if(cause != null)   queryParams += "cause" -> cause.toString
+    if(effect != null) effect.foreach { v => queryParams += "effect" -> v.toString }if(cause != null) cause.foreach { v => queryParams += "cause" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -84,7 +87,8 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
       userId: Integer,
       variableName: String,
       organizationToken: String,
-      includePublic: String)(implicit reader: ClientResponseReader[List[Correlation]]): Future[List[Correlation]] = {
+      includePublic: Option[String] = None
+      )(implicit reader: ClientResponseReader[List[Correlation]]): Future[List[Correlation]] = {
     // create path and map variables
     val path = (addFmt("/v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/causes")
         replaceAll ("\\{" + "organizationId" + "\\}",organizationId.toString)
@@ -98,8 +102,7 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
     
 
     
-    if(organizationToken != null)   queryParams += "organization_token" -> organizationToken.toString
-    if(includePublic != null)   queryParams += "include_public" -> includePublic.toString
+    if(organizationToken != null)   queryParams += "organization_token" -> organizationToken.toStringif(includePublic != null) includePublic.foreach { v => queryParams += "include_public" -> v.toString }
 
     
 
@@ -114,7 +117,8 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
       userId: Integer,
       variableName: String,
       organizationToken: String,
-      includePublic: String)(implicit reader: ClientResponseReader[List[Correlation]]): Future[List[Correlation]] = {
+      includePublic: Option[String] = None
+      )(implicit reader: ClientResponseReader[List[CommonResponse]]): Future[List[CommonResponse]] = {
     // create path and map variables
     val path = (addFmt("/v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/effects")
         replaceAll ("\\{" + "organizationId" + "\\}",organizationId.toString)
@@ -128,8 +132,7 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
     
 
     
-    if(organizationToken != null)   queryParams += "organization_token" -> organizationToken.toString
-    if(includePublic != null)   queryParams += "include_public" -> includePublic.toString
+    if(organizationToken != null)   queryParams += "organization_token" -> organizationToken.toStringif(includePublic != null) includePublic.foreach { v => queryParams += "include_public" -> v.toString }
 
     
 
@@ -222,6 +225,56 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
     
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  
+  def v1VotesPost(cause: String,
+      effect: String,
+      vote: Option[Boolean] = None
+      )(implicit reader: ClientResponseReader[CommonResponse]): Future[CommonResponse] = {
+    // create path and map variables
+    val path = (addFmt("/v1/votes"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    
+
+    
+    if(cause != null)   queryParams += "cause" -> cause.toString
+    if(effect != null)   queryParams += "effect" -> effect.toStringif(vote != null) vote.foreach { v => queryParams += "vote" -> v.toString }
+
+    
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  
+  def v1VotesDeletePost(cause: String,
+      effect: String)(implicit reader: ClientResponseReader[CommonResponse]): Future[CommonResponse] = {
+    // create path and map variables
+    val path = (addFmt("/v1/votes/delete"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    
+
+    
+    if(cause != null)   queryParams += "cause" -> cause.toString
+    if(effect != null)   queryParams += "effect" -> effect.toString
+
+    
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

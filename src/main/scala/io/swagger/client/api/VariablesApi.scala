@@ -62,7 +62,11 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
   
   def publicVariablesSearchSearchGet(search: String,
-      effectOrCause: String)(implicit reader: ClientResponseReader[Variable]): Future[Variable] = {
+      effectOrCause: Option[String] = None,
+      limit: Option[Integer] = None,
+      offset: Option[Integer] = None,
+      sort: Option[Integer] = None
+      )(implicit reader: ClientResponseReader[Variable]): Future[Variable] = {
     // create path and map variables
     val path = (addFmt("/public/variables/search/{search}")
         replaceAll ("\\{" + "search" + "\\}",search.toString))
@@ -73,8 +77,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
     
 
-    
-    if(effectOrCause != null)   queryParams += "effectOrCause" -> effectOrCause.toString
+    if(effectOrCause != null) effectOrCause.foreach { v => queryParams += "effectOrCause" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -127,8 +130,12 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
   }
 
   
-  def variablesGet(userId: Integer,
-      categoryName: String)(implicit reader: ClientResponseReader[Variable]): Future[Variable] = {
+  def variablesGet(userId: Option[Integer] = None,
+      category: Option[String] = None,
+      limit: Option[Integer] = None,
+      offset: Option[Integer] = None,
+      sort: Option[Integer] = None
+      )(implicit reader: ClientResponseReader[Variable]): Future[Variable] = {
     // create path and map variables
     val path = (addFmt("/variables"))
 
@@ -138,9 +145,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
     
 
-    
-    if(userId != null)   queryParams += "userId" -> userId.toString
-    if(categoryName != null)   queryParams += "categoryName" -> categoryName.toString
+    if(userId != null) userId.foreach { v => queryParams += "userId" -> v.toString }if(category != null) category.foreach { v => queryParams += "category" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -173,10 +178,11 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
   
   def variablesSearchSearchGet(search: String,
-      categoryName: String,
-      source: String,
-      limit: Integer,
-      offset: Integer)(implicit reader: ClientResponseReader[List[Variable]]): Future[List[Variable]] = {
+      categoryName: Option[String] = None,
+      source: Option[String] = None,
+      limit: Option[Integer] = None,
+      offset: Option[Integer] = None
+      )(implicit reader: ClientResponseReader[List[Variable]]): Future[List[Variable]] = {
     // create path and map variables
     val path = (addFmt("/variables/search/{search}")
         replaceAll ("\\{" + "search" + "\\}",search.toString))
@@ -187,11 +193,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
     
 
-    
-    if(categoryName != null)   queryParams += "categoryName" -> categoryName.toString
-    if(source != null)   queryParams += "source" -> source.toString
-    if(limit != null)   queryParams += "limit" -> limit.toString
-    if(offset != null)   queryParams += "offset" -> offset.toString
+    if(categoryName != null) categoryName.foreach { v => queryParams += "categoryName" -> v.toString }if(source != null) source.foreach { v => queryParams += "source" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }
 
     
 

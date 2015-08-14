@@ -30,6 +30,8 @@ class SwaggerClient(config: SwaggerConfig) extends Closeable {
   
   val organizations = new OrganizationsApi(client, config)
   
+  val votes = new VotesApi(client, config)
+  
   val pairs = new PairsApi(client, config)
   
   val units = new UnitsApi(client, config)

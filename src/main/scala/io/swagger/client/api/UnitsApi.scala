@@ -31,9 +31,10 @@ class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
   }
 
   
-  def unitsGet(unitName: String,
-      abbreviatedUnitName: String,
-      categoryName: String)(implicit reader: ClientResponseReader[List[Unit]]): Future[List[Unit]] = {
+  def unitsGet(unitName: Option[String] = None,
+      abbreviatedUnitName: Option[String] = None,
+      categoryName: Option[String] = None
+      )(implicit reader: ClientResponseReader[List[Unit]]): Future[List[Unit]] = {
     // create path and map variables
     val path = (addFmt("/units"))
 
@@ -43,10 +44,32 @@ class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
 
     
 
+    if(unitName != null) unitName.foreach { v => queryParams += "unitName" -> v.toString }if(abbreviatedUnitName != null) abbreviatedUnitName.foreach { v => queryParams += "abbreviatedUnitName" -> v.toString }if(categoryName != null) categoryName.foreach { v => queryParams += "categoryName" -> v.toString }
+
     
-    if(unitName != null)   queryParams += "unitName" -> unitName.toString
-    if(abbreviatedUnitName != null)   queryParams += "abbreviatedUnitName" -> abbreviatedUnitName.toString
-    if(categoryName != null)   queryParams += "categoryName" -> categoryName.toString
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  
+  def unitsVariableGet(unitName: Option[String] = None,
+      abbreviatedUnitName: Option[String] = None,
+      categoryName: Option[String] = None,
+      variable: Option[String] = None
+      )(implicit reader: ClientResponseReader[List[Unit]]): Future[List[Unit]] = {
+    // create path and map variables
+    val path = (addFmt("/unitsVariable"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    
+
+    if(unitName != null) unitName.foreach { v => queryParams += "unitName" -> v.toString }if(abbreviatedUnitName != null) abbreviatedUnitName.foreach { v => queryParams += "abbreviatedUnitName" -> v.toString }if(categoryName != null) categoryName.foreach { v => queryParams += "categoryName" -> v.toString }if(variable != null) variable.foreach { v => queryParams += "variable" -> v.toString }
 
     
 
