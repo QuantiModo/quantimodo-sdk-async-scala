@@ -14,11 +14,11 @@ class SwaggerClient(config: SwaggerConfig) extends Closeable {
 
   protected def transportClient: TransportClient = new RestClient(config)
   
-  val connectors = new ConnectorsApi(client, config)
-  
   val variables = new VariablesApi(client, config)
   
   val oauth = new OauthApi(client, config)
+  
+  val connectors = new ConnectorsApi(client, config)
   
   val user = new UserApi(client, config)
   

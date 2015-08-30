@@ -12,7 +12,7 @@ case class Connector (
   connected: String,  // True if the authenticated user has this connector enabled
   connectInstructions: String,  // URL and parameters used when connecting to a service
   lastUpdate: Integer,  // Epoch timestamp of last sync
-  latestData: Integer,  // Number of measurements obtained during latest update
+  totalMeasurementsInLastUpdate: Integer,  // Number of measurements obtained during latest update
   noDataYet: Boolean  // True if user has no measurements for this connector
   
 )

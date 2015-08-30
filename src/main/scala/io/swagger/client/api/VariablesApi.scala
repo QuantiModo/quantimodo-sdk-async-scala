@@ -1,8 +1,8 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.Variable
+import io.swagger.client.model.UserVariables
 import io.swagger.client.model.VariableCategory
-import io.swagger.client.model.VariableUserSettings
 import io.swagger.client.model.VariablesNew
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
@@ -88,6 +88,27 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
   }
 
   
+  def v1UserVariablesPost(sharingData: UserVariables)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[UserVariables]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/v1/userVariables"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    
+
+    
+
+    
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(sharingData))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  
   def variableCategoriesGet()(implicit reader: ClientResponseReader[List[VariableCategory]]): Future[List[VariableCategory]] = {
     // create path and map variables
     val path = (addFmt("/variableCategories"))
@@ -103,27 +124,6 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
     
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  
-  def variableUserSettingsPost(sharingData: VariableUserSettings)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[VariableUserSettings]): Future[Unit] = {
-    // create path and map variables
-    val path = (addFmt("/variableUserSettings"))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-    
-
-    
-
-    
-
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(sharingData))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

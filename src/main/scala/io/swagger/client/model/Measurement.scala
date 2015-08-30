@@ -10,6 +10,6 @@ case class Measurement (
   value: Double,  // Converted measurement value in requested unit
   unit: String,  // Unit of measurement as requested in GET request
   storedValue: Double,  // Measurement value in the unit as orignally submitted
-  storedUnit: String  // Unit of measurement as originally submitted
+  storedAbbreviatedUnitName: String  // Unit of measurement as originally submitted
   
 )
