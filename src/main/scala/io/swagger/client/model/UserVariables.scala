@@ -9,8 +9,8 @@ case class UserVariables (
   durationOfAction: Integer,  // Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
   fillingValue: Integer,  // fillingValue
   joinWith: String,  // joinWith
-  maximumValue: Float,  // maximumValue
-  minimumValue: Float,  // minimumValue
+  maximumAllowedValue: Float,  // maximumAllowedValue
+  minimumAllowedValue: Float,  // minimumAllowedValue
   name: String,  // name
   onsetDelay: Integer,  // onsetDelay
   unit: String  // unit

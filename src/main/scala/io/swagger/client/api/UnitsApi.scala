@@ -10,9 +10,9 @@ import collection.mutable
 class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def unitCategoriesGet()(implicit reader: ClientResponseReader[UnitCategory]): Future[UnitCategory] = {
+  def v1UnitCategoriesGet()(implicit reader: ClientResponseReader[UnitCategory]): Future[UnitCategory] = {
     // create path and map variables
-    val path = (addFmt("/unitCategories"))
+    val path = (addFmt("/v1/unitCategories"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -31,12 +31,12 @@ class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
   }
 
   
-  def unitsGet(unitName: Option[String] = None,
+  def v1UnitsGet(unitName: Option[String] = None,
       abbreviatedUnitName: Option[String] = None,
       categoryName: Option[String] = None
       )(implicit reader: ClientResponseReader[List[Unit]]): Future[List[Unit]] = {
     // create path and map variables
-    val path = (addFmt("/units"))
+    val path = (addFmt("/v1/units"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -55,13 +55,13 @@ class UnitsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
   }
 
   
-  def unitsVariableGet(unitName: Option[String] = None,
+  def v1UnitsVariableGet(unitName: Option[String] = None,
       abbreviatedUnitName: Option[String] = None,
       categoryName: Option[String] = None,
       variable: Option[String] = None
       )(implicit reader: ClientResponseReader[List[Unit]]): Future[List[Unit]] = {
     // create path and map variables
-    val path = (addFmt("/unitsVariable"))
+    val path = (addFmt("/v1/unitsVariable"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]

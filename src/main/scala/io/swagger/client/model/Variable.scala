@@ -8,7 +8,8 @@ case class Variable (
   name: String,  // User-defined variable display name.
   originalName: String,  // Name used when the variable was originally created in the `variables` table.
   category: String,  // Variable category like Mood, Sleep, Physical Activity, Treatment, Symptom, etc.
-  unit: String,  // Abbreviated name of the default unit for the variable
+  abbreviatedUnitName: String,  // Abbreviated name of the default unit for the variable
+  abbreviatedUnitId: Integer,  // Id of the default unit for the variable
   sources: String,  // Comma-separated list of source names to limit variables to those sources
   minimumValue: Double,  // Minimum reasonable value for this variable (uses default unit)
   maximumValue: Double,  // Maximum reasonable value for this variable (uses default unit)
@@ -28,10 +29,10 @@ case class Variable (
   outcome: Integer,  // Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.
   measurementsAtLastAnalysis: Integer,  // The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the measurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there&#39;s not enough new data to make a significant difference in the correlation.
   numberOfMeasurements: Integer,  // Number of measurements
-  lastUnit: Integer,  // Last unit
+  lastUnit: String,  // Last unit
   lastValue: Integer,  // Last value
   mostCommonValue: Integer,  // Most common value
-  mostCommonUnit: Integer,  // Most common unit
+  mostCommonUnit: String,  // Most common unit
   lastSource: Integer  // Last source
   
 )

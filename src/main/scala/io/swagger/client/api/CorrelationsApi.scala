@@ -4,6 +4,7 @@ import io.swagger.client.model.Correlation
 import io.swagger.client.model.PostCorrelation
 import io.swagger.client.model.JsonErrorResponse
 import io.swagger.client.model.CommonResponse
+import io.swagger.client.model.Number
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
 import scala.concurrent.duration._
@@ -12,14 +13,14 @@ import collection.mutable
 class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def correlationsGet(effect: Option[String] = None,
+  def v1CorrelationsGet(effect: Option[String] = None,
       cause: Option[String] = None,
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[Integer] = None
       )(implicit reader: ClientResponseReader[List[Correlation]]): Future[List[Correlation]] = {
     // create path and map variables
-    val path = (addFmt("/correlations"))
+    val path = (addFmt("/v1/correlations"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -28,30 +29,6 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
     
 
     if(effect != null) effect.foreach { v => queryParams += "effect" -> v.toString }if(cause != null) cause.foreach { v => queryParams += "cause" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
-
-    
-
-    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  
-  def publicCorrelationsSearchSearchGet(search: String,
-      effectOrCause: String)(implicit reader: ClientResponseReader[List[Correlation]]): Future[List[Correlation]] = {
-    // create path and map variables
-    val path = (addFmt("/public/correlations/search/{search}")
-        replaceAll ("\\{" + "search" + "\\}",search.toString))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-    
-
-    
-    if(effectOrCause != null)   queryParams += "effectOrCause" -> effectOrCause.toString
 
     
 
@@ -133,6 +110,30 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
     if(organizationToken != null)   queryParams += "organization_token" -> organizationToken.toStringif(includePublic != null) includePublic.foreach { v => queryParams += "include_public" -> v.toString }
+
+    
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  
+  def v1PublicCorrelationsSearchSearchGet(search: String,
+      effectOrCause: String)(implicit reader: ClientResponseReader[List[Correlation]]): Future[List[Correlation]] = {
+    // create path and map variables
+    val path = (addFmt("/v1/public/correlations/search/{search}")
+        replaceAll ("\\{" + "search" + "\\}",search.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    
+
+    
+    if(effectOrCause != null)   queryParams += "effectOrCause" -> effectOrCause.toString
 
     
 
@@ -233,6 +234,7 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
   
   def v1VotesPost(cause: String,
       effect: String,
+      correlation: Number,
       vote: Option[Boolean] = None
       )(implicit reader: ClientResponseReader[CommonResponse]): Future[CommonResponse] = {
     // create path and map variables
@@ -246,7 +248,8 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
     if(cause != null)   queryParams += "cause" -> cause.toString
-    if(effect != null)   queryParams += "effect" -> effect.toStringif(vote != null) vote.foreach { v => queryParams += "vote" -> v.toString }
+    if(effect != null)   queryParams += "effect" -> effect.toString
+    if(correlation != null)   queryParams += "correlation" -> correlation.toStringif(vote != null) vote.foreach { v => queryParams += "vote" -> v.toString }
 
     
 

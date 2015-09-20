@@ -9,7 +9,7 @@ import collection.mutable
 class PairsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def pairsGet(cause: String,
+  def v1PairsGet(cause: String,
       effect: String,
       causeSource: Option[String] = None,
       causeUnit: Option[String] = None,
@@ -24,7 +24,7 @@ class PairsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
       sort: Option[Integer] = None
       )(implicit reader: ClientResponseReader[List[Pairs]]): Future[List[Pairs]] = {
     // create path and map variables
-    val path = (addFmt("/pairs"))
+    val path = (addFmt("/v1/pairs"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]

@@ -1,5 +1,6 @@
 package io.swagger.client.api
 
+import io.swagger.client.model.Number
 import io.swagger.client.model.CommonResponse
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
@@ -11,6 +12,7 @@ class VotesApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
   
   def v1VotesPost(cause: String,
       effect: String,
+      correlation: Number,
       vote: Option[Boolean] = None
       )(implicit reader: ClientResponseReader[CommonResponse]): Future[CommonResponse] = {
     // create path and map variables
@@ -24,7 +26,8 @@ class VotesApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
 
     
     if(cause != null)   queryParams += "cause" -> cause.toString
-    if(effect != null)   queryParams += "effect" -> effect.toStringif(vote != null) vote.foreach { v => queryParams += "vote" -> v.toString }
+    if(effect != null)   queryParams += "effect" -> effect.toString
+    if(correlation != null)   queryParams += "correlation" -> correlation.toStringif(vote != null) vote.foreach { v => queryParams += "vote" -> v.toString }
 
     
 
