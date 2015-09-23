@@ -55,6 +55,9 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
   
   def v1MeasurementsGet(variableName: Option[String] = None,
+      source: Option[String] = None,
+      value: Option[String] = None,
+      lastUpdated: Option[String] = None,
       unit: Option[String] = None,
       startTime: Option[String] = None,
       endTime: Option[String] = None,
@@ -73,7 +76,7 @@ class MeasurementsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    if(variableName != null) variableName.foreach { v => queryParams += "variableName" -> v.toString }if(unit != null) unit.foreach { v => queryParams += "unit" -> v.toString }if(startTime != null) startTime.foreach { v => queryParams += "startTime" -> v.toString }if(endTime != null) endTime.foreach { v => queryParams += "endTime" -> v.toString }if(groupingWidth != null) groupingWidth.foreach { v => queryParams += "groupingWidth" -> v.toString }if(groupingTimezone != null) groupingTimezone.foreach { v => queryParams += "groupingTimezone" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(variableName != null) variableName.foreach { v => queryParams += "variableName" -> v.toString }if(source != null) source.foreach { v => queryParams += "source" -> v.toString }if(value != null) value.foreach { v => queryParams += "value" -> v.toString }if(lastUpdated != null) lastUpdated.foreach { v => queryParams += "lastUpdated" -> v.toString }if(unit != null) unit.foreach { v => queryParams += "unit" -> v.toString }if(startTime != null) startTime.foreach { v => queryParams += "startTime" -> v.toString }if(endTime != null) endTime.foreach { v => queryParams += "endTime" -> v.toString }if(groupingWidth != null) groupingWidth.foreach { v => queryParams += "groupingWidth" -> v.toString }if(groupingTimezone != null) groupingTimezone.foreach { v => queryParams += "groupingTimezone" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 

@@ -15,6 +15,10 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
   
   def v1CorrelationsGet(effect: Option[String] = None,
       cause: Option[String] = None,
+      correlationCoefficient: Option[String] = None,
+      onsetDelay: Option[String] = None,
+      durationOfAction: Option[String] = None,
+      lastUpdated: Option[String] = None,
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[Integer] = None
@@ -28,7 +32,7 @@ class CorrelationsApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    if(effect != null) effect.foreach { v => queryParams += "effect" -> v.toString }if(cause != null) cause.foreach { v => queryParams += "cause" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(effect != null) effect.foreach { v => queryParams += "effect" -> v.toString }if(cause != null) cause.foreach { v => queryParams += "cause" -> v.toString }if(correlationCoefficient != null) correlationCoefficient.foreach { v => queryParams += "correlationCoefficient" -> v.toString }if(onsetDelay != null) onsetDelay.foreach { v => queryParams += "onsetDelay" -> v.toString }if(durationOfAction != null) durationOfAction.foreach { v => queryParams += "durationOfAction" -> v.toString }if(lastUpdated != null) lastUpdated.foreach { v => queryParams += "lastUpdated" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 

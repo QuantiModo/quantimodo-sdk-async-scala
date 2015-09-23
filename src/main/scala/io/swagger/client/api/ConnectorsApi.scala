@@ -11,7 +11,8 @@ import collection.mutable
 class ConnectorsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def v1Connect.jsGet(t: Option[String] = None
+  def v1Connect.jsGet(access token: String,
+      mashape key: Option[String] = None
       )(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/v1/connect.js"))
@@ -22,7 +23,8 @@ class ConnectorsApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    if(t != null) t.foreach { v => queryParams += "t" -> v.toString }
+    
+    if(access token != null)   queryParams += "access token" -> access token.toStringif(mashape key != null) mashape key.foreach { v => queryParams += "mashape key" -> v.toString }
 
     
 

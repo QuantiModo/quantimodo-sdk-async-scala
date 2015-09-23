@@ -34,7 +34,6 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
   
   def v1PublicVariablesSearchSearchGet(search: String,
-      effectOrCause: Option[String] = None,
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[Integer] = None
@@ -49,7 +48,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
     
 
-    if(effectOrCause != null) effectOrCause.foreach { v => queryParams += "effectOrCause" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -104,6 +103,12 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
   
   def v1VariablesGet(userId: Option[Integer] = None,
       category: Option[String] = None,
+      name: Option[String] = None,
+      lastUpdated: Option[String] = None,
+      source: Option[String] = None,
+      latestMeasurementTime: Option[String] = None,
+      numberOfMeasurements: Option[String] = None,
+      lastSource: Option[String] = None,
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[Integer] = None
@@ -117,7 +122,7 @@ class VariablesApi(client: TransportClient, config: SwaggerConfig) extends ApiCl
 
     
 
-    if(userId != null) userId.foreach { v => queryParams += "userId" -> v.toString }if(category != null) category.foreach { v => queryParams += "category" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(userId != null) userId.foreach { v => queryParams += "userId" -> v.toString }if(category != null) category.foreach { v => queryParams += "category" -> v.toString }if(name != null) name.foreach { v => queryParams += "name" -> v.toString }if(lastUpdated != null) lastUpdated.foreach { v => queryParams += "lastUpdated" -> v.toString }if(source != null) source.foreach { v => queryParams += "source" -> v.toString }if(latestMeasurementTime != null) latestMeasurementTime.foreach { v => queryParams += "latestMeasurementTime" -> v.toString }if(numberOfMeasurements != null) numberOfMeasurements.foreach { v => queryParams += "numberOfMeasurements" -> v.toString }if(lastSource != null) lastSource.foreach { v => queryParams += "lastSource" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
