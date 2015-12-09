@@ -26,6 +26,10 @@ class SwaggerClient(config: SwaggerConfig) extends Closeable {
   
   val connector = new ConnectorApi(client, config)
   
+  val organization = new OrganizationApi(client, config)
+  
+  val commonVariableRelationship = new CommonVariableRelationshipApi(client, config)
+  
   val correlation = new CorrelationApi(client, config)
   
   val connection = new ConnectionApi(client, config)
@@ -37,6 +41,8 @@ class SwaggerClient(config: SwaggerConfig) extends Closeable {
   val source = new SourceApi(client, config)
   
   val variableCategory = new VariableCategoryApi(client, config)
+  
+  val userVariableRelationship = new UserVariableRelationshipApi(client, config)
   
   val credential = new CredentialApi(client, config)
   

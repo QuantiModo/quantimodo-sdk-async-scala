@@ -18,14 +18,14 @@ case class Correlation (
   optimal_pearson_product: Float,  // Optimal Pearson Product
   vote: Float,  // Vote
   statistical_significance: Float,  // A function of the effect size and sample size
-  cause_unit: String,  // Unit of Cause
-  cause_unit_id: Integer,  // Unit ID of Cause
+  cause_unit: String,  // Unit of the predictor variable
+  cause_unit_id: Integer,  // Unit ID of the predictor variable
   cause_changes: Integer,  // Cause changes
   effect_changes: Integer,  // Effect changes
   qm_score: Float,  // QM Score
   error: String,  // error
-  created_at: DateTime,  // created_at
-  updated_at: DateTime,  // updated_at
+  created_at: DateTime,  // When the record was first created. Use ISO 8601 datetime format
+  updated_at: DateTime,  // When the record in the database was last updated. Use ISO 8601 datetime format
   reverse_pearson_correlation_coefficient: Float,  // Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation
   predictive_pearson_correlation_coefficient: Float  // Predictive Pearson Correlation Coefficient
   

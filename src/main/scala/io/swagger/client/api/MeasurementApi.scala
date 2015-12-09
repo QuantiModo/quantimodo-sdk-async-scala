@@ -1,10 +1,10 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.Number
-import io.swagger.client.model.Inline_response_200_11
+import io.swagger.client.model.Inline_response_200_13
 import io.swagger.client.model.MeasurementPost
 import java.io.File
-import io.swagger.client.model.Inline_response_200_12
+import io.swagger.client.model.Inline_response_200_14
 import io.swagger.client.model.Measurement
 import io.swagger.client.model.Inline_response_200_2
 import io.swagger.client._
@@ -15,13 +15,17 @@ import collection.mutable
 class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def measurementsGet(userId: Option[Integer] = None,
+  def measurementsGet(accessToken: Option[String] = None,
+      userId: Option[Integer] = None,
       clientId: Option[String] = None,
       connectorId: Option[Integer] = None,
       variableId: Option[Integer] = None,
-      startTime: Option[Integer] = None,
+      sourceId: Option[Integer] = None,
+      startTime: Option[String] = None,
       value: Option[Number] = None,
+      unitId: Option[Integer] = None,
       originalValue: Option[Number] = None,
+      originalUnitId: Option[Integer] = None,
       duration: Option[Integer] = None,
       note: Option[String] = None,
       latitude: Option[Number] = None,
@@ -33,7 +37,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[String] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_11]): Future[Inline_response_200_11] = {
+      )(implicit reader: ClientResponseReader[Inline_response_200_13]): Future[Inline_response_200_13] = {
     // create path and map variables
     val path = (addFmt("/measurements"))
 
@@ -43,7 +47,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
 
     
 
-    if(userId != null) userId.foreach { v => queryParams += "user_id" -> v.toString }if(clientId != null) clientId.foreach { v => queryParams += "client_id" -> v.toString }if(connectorId != null) connectorId.foreach { v => queryParams += "connector_id" -> v.toString }if(variableId != null) variableId.foreach { v => queryParams += "variable_id" -> v.toString }if(startTime != null) startTime.foreach { v => queryParams += "start_time" -> v.toString }if(value != null) value.foreach { v => queryParams += "value" -> v.toString }if(originalValue != null) originalValue.foreach { v => queryParams += "original_value" -> v.toString }if(duration != null) duration.foreach { v => queryParams += "duration" -> v.toString }if(note != null) note.foreach { v => queryParams += "note" -> v.toString }if(latitude != null) latitude.foreach { v => queryParams += "latitude" -> v.toString }if(longitude != null) longitude.foreach { v => queryParams += "longitude" -> v.toString }if(location != null) location.foreach { v => queryParams += "location" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(error != null) error.foreach { v => queryParams += "error" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(userId != null) userId.foreach { v => queryParams += "user_id" -> v.toString }if(clientId != null) clientId.foreach { v => queryParams += "client_id" -> v.toString }if(connectorId != null) connectorId.foreach { v => queryParams += "connector_id" -> v.toString }if(variableId != null) variableId.foreach { v => queryParams += "variable_id" -> v.toString }if(sourceId != null) sourceId.foreach { v => queryParams += "source_id" -> v.toString }if(startTime != null) startTime.foreach { v => queryParams += "start_time" -> v.toString }if(value != null) value.foreach { v => queryParams += "value" -> v.toString }if(unitId != null) unitId.foreach { v => queryParams += "unit_id" -> v.toString }if(originalValue != null) originalValue.foreach { v => queryParams += "original_value" -> v.toString }if(originalUnitId != null) originalUnitId.foreach { v => queryParams += "original_unit_id" -> v.toString }if(duration != null) duration.foreach { v => queryParams += "duration" -> v.toString }if(note != null) note.foreach { v => queryParams += "note" -> v.toString }if(latitude != null) latitude.foreach { v => queryParams += "latitude" -> v.toString }if(longitude != null) longitude.foreach { v => queryParams += "longitude" -> v.toString }if(location != null) location.foreach { v => queryParams += "location" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(error != null) error.foreach { v => queryParams += "error" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -54,8 +58,9 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
   }
 
   
-  def measurementsPost(body: Option[MeasurementPost] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_11], writer: RequestWriter[MeasurementPost]): Future[Inline_response_200_11] = {
+  def measurementsPost(accessToken: Option[String] = None,
+      body: Option[MeasurementPost] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_13], writer: RequestWriter[MeasurementPost]): Future[Inline_response_200_13] = {
     // create path and map variables
     val path = (addFmt("/measurements"))
 
@@ -65,7 +70,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -76,7 +81,8 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
   }
 
   
-  def measurementsCsvGet()(implicit reader: ClientResponseReader[File]): Future[File] = {
+  def measurementsCsvGet(accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[File]): Future[File] = {
     // create path and map variables
     val path = (addFmt("/measurements/csv"))
 
@@ -86,7 +92,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -97,7 +103,8 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
   }
 
   
-  def measurementsRequestCsvPost()(implicit reader: ClientResponseReader[Integer]): Future[Integer] = {
+  def measurementsRequestCsvPost(accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Integer]): Future[Integer] = {
     // create path and map variables
     val path = (addFmt("/measurements/request_csv"))
 
@@ -107,7 +114,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -118,7 +125,9 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
   }
 
   
-  def measurementsIdGet(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_12]): Future[Inline_response_200_12] = {
+  def measurementsIdGet(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_14]): Future[Inline_response_200_14] = {
     // create path and map variables
     val path = (addFmt("/measurements/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -129,7 +138,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -141,6 +150,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
 
   
   def measurementsIdPut(id: Integer,
+      accessToken: Option[String] = None,
       body: Option[Measurement] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[Measurement]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -153,7 +163,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -164,7 +174,9 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
   }
 
   
-  def measurementsIdDelete(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+  def measurementsIdDelete(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/measurements/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -175,7 +187,7 @@ class MeasurementApi(client: TransportClient, config: SwaggerConfig) extends Api
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 

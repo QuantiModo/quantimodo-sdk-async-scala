@@ -1,8 +1,8 @@
 package io.swagger.client.api
 
-import io.swagger.client.model.Inline_response_200_15
-import io.swagger.client.model.Inline_response_200_16
+import io.swagger.client.model.Inline_response_200_19
 import io.swagger.client.model.UnitCategory
+import io.swagger.client.model.Inline_response_200_20
 import io.swagger.client.model.Inline_response_200_2
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
@@ -12,13 +12,14 @@ import collection.mutable
 class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def unitCategoriesGet(name: Option[String] = None,
+  def unitCategoriesGet(accessToken: Option[String] = None,
+      name: Option[String] = None,
       createdAt: Option[String] = None,
       updatedAt: Option[String] = None,
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[String] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_15]): Future[Inline_response_200_15] = {
+      )(implicit reader: ClientResponseReader[Inline_response_200_19]): Future[Inline_response_200_19] = {
     // create path and map variables
     val path = (addFmt("/unitCategories"))
 
@@ -28,7 +29,7 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    if(name != null) name.foreach { v => queryParams += "name" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(name != null) name.foreach { v => queryParams += "name" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -39,8 +40,9 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def unitCategoriesPost(body: Option[UnitCategory] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_16], writer: RequestWriter[UnitCategory]): Future[Inline_response_200_16] = {
+  def unitCategoriesPost(accessToken: Option[String] = None,
+      body: Option[UnitCategory] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_20], writer: RequestWriter[UnitCategory]): Future[Inline_response_200_20] = {
     // create path and map variables
     val path = (addFmt("/unitCategories"))
 
@@ -50,7 +52,7 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -61,7 +63,9 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def unitCategoriesIdGet(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_16]): Future[Inline_response_200_16] = {
+  def unitCategoriesIdGet(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_20]): Future[Inline_response_200_20] = {
     // create path and map variables
     val path = (addFmt("/unitCategories/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -72,7 +76,7 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -84,6 +88,7 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
   
   def unitCategoriesIdPut(id: Integer,
+      accessToken: Option[String] = None,
       body: Option[UnitCategory] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[UnitCategory]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -96,7 +101,7 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -107,7 +112,9 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def unitCategoriesIdDelete(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+  def unitCategoriesIdDelete(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/unitCategories/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -118,7 +125,7 @@ class UnitCategoryApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 

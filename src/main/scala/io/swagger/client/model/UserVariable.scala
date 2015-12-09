@@ -5,6 +5,7 @@ import org.joda.time.DateTime
 
 case class UserVariable (
   parent_id: Integer,  // ID of the parent variable if this variable has any parent
+  user_id: Integer,  // User ID
   client_id: String,  // client_id
   variable_id: Integer,  // ID of variable
   default_unit_id: Integer,  // ID of unit to use for this variable
@@ -33,7 +34,7 @@ case class UserVariable (
   last_successful_update_time: DateTime,  // When this variable or its settings were last updated
   standard_deviation: Float,  // Standard deviation
   variance: Float,  // Variance
-  minimum_recorded_daily_value: Float,  // Minimum recorded daily value of this variable
+  minimum_recorded_value: Float,  // Minimum recorded value of this variable
   maximum_recorded_daily_value: Float,  // Maximum recorded daily value of this variable
   mean: Float,  // Mean
   median: Float,  // Median
@@ -46,8 +47,8 @@ case class UserVariable (
   latitude: Float,  // Latitude
   longitude: Float,  // Longitude
   location: String,  // Location
-  created_at: DateTime,  // created_at
-  updated_at: DateTime,  // updated_at
+  created_at: DateTime,  // When the record was first created. Use ISO 8601 datetime format
+  updated_at: DateTime,  // When the record in the database was last updated. Use ISO 8601 datetime format
   outcome: Boolean,  // Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
   sources: String,  // Comma-separated list of source names to limit variables to those sources
   earliest_source_time: Integer,  // Earliest source time

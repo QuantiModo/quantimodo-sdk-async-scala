@@ -16,8 +16,8 @@ case class VariableCategory (
   cause_only: Boolean,  // A value of 1 indicates that this category is generally a cause in a causal relationship.  An example of a causeOnly category would be a category such as Work which would generally not be influenced by the behaviour of the user
   public: Integer,  // Is category public
   outcome: Boolean,  // outcome
-  created_at: DateTime,  // created_at
-  updated_at: DateTime,  // updated_at
+  created_at: DateTime,  // When the record was first created. Use ISO 8601 datetime format
+  updated_at: DateTime,  // When the record in the database was last updated. Use ISO 8601 datetime format
   image_url: String,  // Image URL
   default_unit_id: Integer  // ID of the default unit for the category
   

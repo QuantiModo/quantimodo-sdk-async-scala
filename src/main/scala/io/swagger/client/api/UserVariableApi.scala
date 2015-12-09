@@ -1,8 +1,8 @@
 package io.swagger.client.api
 
+import io.swagger.client.model.Inline_response_200_16
 import io.swagger.client.model.Number
-import io.swagger.client.model.Inline_response_200_21
-import io.swagger.client.model.Inline_response_200_22
+import io.swagger.client.model.Inline_response_200_26
 import io.swagger.client.model.UserVariable
 import io.swagger.client.model.Inline_response_200_2
 import io.swagger.client._
@@ -13,8 +13,11 @@ import collection.mutable
 class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def userVariablesGet(clientId: Option[String] = None,
+  def userVariablesGet(accessToken: Option[String] = None,
+      clientId: Option[String] = None,
+      parentId: Option[Integer] = None,
       variableId: Option[Integer] = None,
+      userId: Option[Integer] = None,
       defaultUnitId: Option[Integer] = None,
       minimumAllowedValue: Option[Number] = None,
       maximumAllowedValue: Option[Number] = None,
@@ -34,6 +37,7 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
       lastOriginalUnitId: Option[Integer] = None,
       lastOriginalValue: Option[Integer] = None,
       lastValue: Option[Number] = None,
+      lastOriginalValue2: Option[Number] = None,
       lastSourceId: Option[Integer] = None,
       numberOfCorrelations: Option[Integer] = None,
       status: Option[String] = None,
@@ -41,8 +45,8 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
       lastSuccessfulUpdateTime: Option[String] = None,
       standardDeviation: Option[Number] = None,
       variance: Option[Number] = None,
-      minimumRecordedDailyValue: Option[Number] = None,
-      maximumRecordedDailyValue: Option[Number] = None,
+      minimumRecordedValue: Option[Number] = None,
+      maximumRecordedValue: Option[Number] = None,
       mean: Option[Number] = None,
       median: Option[Number] = None,
       mostCommonUnitId: Option[Integer] = None,
@@ -67,7 +71,7 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[String] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_21]): Future[Inline_response_200_21] = {
+      )(implicit reader: ClientResponseReader[Inline_response_200_16]): Future[Inline_response_200_16] = {
     // create path and map variables
     val path = (addFmt("/userVariables"))
 
@@ -77,7 +81,7 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    if(clientId != null) clientId.foreach { v => queryParams += "client_id" -> v.toString }if(variableId != null) variableId.foreach { v => queryParams += "variable_id" -> v.toString }if(defaultUnitId != null) defaultUnitId.foreach { v => queryParams += "default_unit_id" -> v.toString }if(minimumAllowedValue != null) minimumAllowedValue.foreach { v => queryParams += "minimum_allowed_value" -> v.toString }if(maximumAllowedValue != null) maximumAllowedValue.foreach { v => queryParams += "maximum_allowed_value" -> v.toString }if(fillingValue != null) fillingValue.foreach { v => queryParams += "filling_value" -> v.toString }if(joinWith != null) joinWith.foreach { v => queryParams += "join_with" -> v.toString }if(onsetDelay != null) onsetDelay.foreach { v => queryParams += "onset_delay" -> v.toString }if(durationOfAction != null) durationOfAction.foreach { v => queryParams += "duration_of_action" -> v.toString }if(variableCategoryId != null) variableCategoryId.foreach { v => queryParams += "variable_category_id" -> v.toString }if(updated != null) updated.foreach { v => queryParams += "updated" -> v.toString }if(public != null) public.foreach { v => queryParams += "public" -> v.toString }if(causeOnly != null) causeOnly.foreach { v => queryParams += "cause_only" -> v.toString }if(fillingType != null) fillingType.foreach { v => queryParams += "filling_type" -> v.toString }if(numberOfMeasurements != null) numberOfMeasurements.foreach { v => queryParams += "number_of_measurements" -> v.toString }if(numberOfProcessedMeasurements != null) numberOfProcessedMeasurements.foreach { v => queryParams += "number_of_processed_measurements" -> v.toString }if(measurementsAtLastAnalysis != null) measurementsAtLastAnalysis.foreach { v => queryParams += "measurements_at_last_analysis" -> v.toString }if(lastUnitId != null) lastUnitId.foreach { v => queryParams += "last_unit_id" -> v.toString }if(lastOriginalUnitId != null) lastOriginalUnitId.foreach { v => queryParams += "last_original_unit_id" -> v.toString }if(lastOriginalValue != null) lastOriginalValue.foreach { v => queryParams += "last_original_value" -> v.toString }if(lastValue != null) lastValue.foreach { v => queryParams += "last_value" -> v.toString }if(lastSourceId != null) lastSourceId.foreach { v => queryParams += "last_source_id" -> v.toString }if(numberOfCorrelations != null) numberOfCorrelations.foreach { v => queryParams += "number_of_correlations" -> v.toString }if(status != null) status.foreach { v => queryParams += "status" -> v.toString }if(errorMessage != null) errorMessage.foreach { v => queryParams += "error_message" -> v.toString }if(lastSuccessfulUpdateTime != null) lastSuccessfulUpdateTime.foreach { v => queryParams += "last_successful_update_time" -> v.toString }if(standardDeviation != null) standardDeviation.foreach { v => queryParams += "standard_deviation" -> v.toString }if(variance != null) variance.foreach { v => queryParams += "variance" -> v.toString }if(minimumRecordedDailyValue != null) minimumRecordedDailyValue.foreach { v => queryParams += "minimum_recorded_daily_value" -> v.toString }if(maximumRecordedDailyValue != null) maximumRecordedDailyValue.foreach { v => queryParams += "maximum_recorded_daily_value" -> v.toString }if(mean != null) mean.foreach { v => queryParams += "mean" -> v.toString }if(median != null) median.foreach { v => queryParams += "median" -> v.toString }if(mostCommonUnitId != null) mostCommonUnitId.foreach { v => queryParams += "most_common_unit_id" -> v.toString }if(mostCommonValue != null) mostCommonValue.foreach { v => queryParams += "most_common_value" -> v.toString }if(numberOfUniqueDailyValues != null) numberOfUniqueDailyValues.foreach { v => queryParams += "number_of_unique_daily_values" -> v.toString }if(numberOfChanges != null) numberOfChanges.foreach { v => queryParams += "number_of_changes" -> v.toString }if(skewness != null) skewness.foreach { v => queryParams += "skewness" -> v.toString }if(kurtosis != null) kurtosis.foreach { v => queryParams += "kurtosis" -> v.toString }if(latitude != null) latitude.foreach { v => queryParams += "latitude" -> v.toString }if(longitude != null) longitude.foreach { v => queryParams += "longitude" -> v.toString }if(location != null) location.foreach { v => queryParams += "location" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(outcome != null) outcome.foreach { v => queryParams += "outcome" -> v.toString }if(sources != null) sources.foreach { v => queryParams += "sources" -> v.toString }if(earliestSourceTime != null) earliestSourceTime.foreach { v => queryParams += "earliest_source_time" -> v.toString }if(latestSourceTime != null) latestSourceTime.foreach { v => queryParams += "latest_source_time" -> v.toString }if(earliestMeasurementTime != null) earliestMeasurementTime.foreach { v => queryParams += "earliest_measurement_time" -> v.toString }if(latestMeasurementTime != null) latestMeasurementTime.foreach { v => queryParams += "latest_measurement_time" -> v.toString }if(earliestFillingTime != null) earliestFillingTime.foreach { v => queryParams += "earliest_filling_time" -> v.toString }if(latestFillingTime != null) latestFillingTime.foreach { v => queryParams += "latest_filling_time" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(clientId != null) clientId.foreach { v => queryParams += "client_id" -> v.toString }if(parentId != null) parentId.foreach { v => queryParams += "parent_id" -> v.toString }if(variableId != null) variableId.foreach { v => queryParams += "variable_id" -> v.toString }if(userId != null) userId.foreach { v => queryParams += "user_id" -> v.toString }if(defaultUnitId != null) defaultUnitId.foreach { v => queryParams += "default_unit_id" -> v.toString }if(minimumAllowedValue != null) minimumAllowedValue.foreach { v => queryParams += "minimum_allowed_value" -> v.toString }if(maximumAllowedValue != null) maximumAllowedValue.foreach { v => queryParams += "maximum_allowed_value" -> v.toString }if(fillingValue != null) fillingValue.foreach { v => queryParams += "filling_value" -> v.toString }if(joinWith != null) joinWith.foreach { v => queryParams += "join_with" -> v.toString }if(onsetDelay != null) onsetDelay.foreach { v => queryParams += "onset_delay" -> v.toString }if(durationOfAction != null) durationOfAction.foreach { v => queryParams += "duration_of_action" -> v.toString }if(variableCategoryId != null) variableCategoryId.foreach { v => queryParams += "variable_category_id" -> v.toString }if(updated != null) updated.foreach { v => queryParams += "updated" -> v.toString }if(public != null) public.foreach { v => queryParams += "public" -> v.toString }if(causeOnly != null) causeOnly.foreach { v => queryParams += "cause_only" -> v.toString }if(fillingType != null) fillingType.foreach { v => queryParams += "filling_type" -> v.toString }if(numberOfMeasurements != null) numberOfMeasurements.foreach { v => queryParams += "number_of_measurements" -> v.toString }if(numberOfProcessedMeasurements != null) numberOfProcessedMeasurements.foreach { v => queryParams += "number_of_processed_measurements" -> v.toString }if(measurementsAtLastAnalysis != null) measurementsAtLastAnalysis.foreach { v => queryParams += "measurements_at_last_analysis" -> v.toString }if(lastUnitId != null) lastUnitId.foreach { v => queryParams += "last_unit_id" -> v.toString }if(lastOriginalUnitId != null) lastOriginalUnitId.foreach { v => queryParams += "last_original_unit_id" -> v.toString }if(lastOriginalValue != null) lastOriginalValue.foreach { v => queryParams += "last_original_value" -> v.toString }if(lastValue != null) lastValue.foreach { v => queryParams += "last_value" -> v.toString }if(lastOriginalValue2 != null) lastOriginalValue2.foreach { v => queryParams += "last_original_value" -> v.toString }if(lastSourceId != null) lastSourceId.foreach { v => queryParams += "last_source_id" -> v.toString }if(numberOfCorrelations != null) numberOfCorrelations.foreach { v => queryParams += "number_of_correlations" -> v.toString }if(status != null) status.foreach { v => queryParams += "status" -> v.toString }if(errorMessage != null) errorMessage.foreach { v => queryParams += "error_message" -> v.toString }if(lastSuccessfulUpdateTime != null) lastSuccessfulUpdateTime.foreach { v => queryParams += "last_successful_update_time" -> v.toString }if(standardDeviation != null) standardDeviation.foreach { v => queryParams += "standard_deviation" -> v.toString }if(variance != null) variance.foreach { v => queryParams += "variance" -> v.toString }if(minimumRecordedValue != null) minimumRecordedValue.foreach { v => queryParams += "minimum_recorded_value" -> v.toString }if(maximumRecordedValue != null) maximumRecordedValue.foreach { v => queryParams += "maximum_recorded_value" -> v.toString }if(mean != null) mean.foreach { v => queryParams += "mean" -> v.toString }if(median != null) median.foreach { v => queryParams += "median" -> v.toString }if(mostCommonUnitId != null) mostCommonUnitId.foreach { v => queryParams += "most_common_unit_id" -> v.toString }if(mostCommonValue != null) mostCommonValue.foreach { v => queryParams += "most_common_value" -> v.toString }if(numberOfUniqueDailyValues != null) numberOfUniqueDailyValues.foreach { v => queryParams += "number_of_unique_daily_values" -> v.toString }if(numberOfChanges != null) numberOfChanges.foreach { v => queryParams += "number_of_changes" -> v.toString }if(skewness != null) skewness.foreach { v => queryParams += "skewness" -> v.toString }if(kurtosis != null) kurtosis.foreach { v => queryParams += "kurtosis" -> v.toString }if(latitude != null) latitude.foreach { v => queryParams += "latitude" -> v.toString }if(longitude != null) longitude.foreach { v => queryParams += "longitude" -> v.toString }if(location != null) location.foreach { v => queryParams += "location" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(outcome != null) outcome.foreach { v => queryParams += "outcome" -> v.toString }if(sources != null) sources.foreach { v => queryParams += "sources" -> v.toString }if(earliestSourceTime != null) earliestSourceTime.foreach { v => queryParams += "earliest_source_time" -> v.toString }if(latestSourceTime != null) latestSourceTime.foreach { v => queryParams += "latest_source_time" -> v.toString }if(earliestMeasurementTime != null) earliestMeasurementTime.foreach { v => queryParams += "earliest_measurement_time" -> v.toString }if(latestMeasurementTime != null) latestMeasurementTime.foreach { v => queryParams += "latest_measurement_time" -> v.toString }if(earliestFillingTime != null) earliestFillingTime.foreach { v => queryParams += "earliest_filling_time" -> v.toString }if(latestFillingTime != null) latestFillingTime.foreach { v => queryParams += "latest_filling_time" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -88,8 +92,9 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def userVariablesPost(body: Option[UserVariable] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_22], writer: RequestWriter[UserVariable]): Future[Inline_response_200_22] = {
+  def userVariablesPost(accessToken: Option[String] = None,
+      body: Option[UserVariable] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_26], writer: RequestWriter[UserVariable]): Future[Inline_response_200_26] = {
     // create path and map variables
     val path = (addFmt("/userVariables"))
 
@@ -99,7 +104,7 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -110,7 +115,9 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def userVariablesIdGet(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_22]): Future[Inline_response_200_22] = {
+  def userVariablesIdGet(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_26]): Future[Inline_response_200_26] = {
     // create path and map variables
     val path = (addFmt("/userVariables/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -121,7 +128,7 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -133,6 +140,7 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
   
   def userVariablesIdPut(id: Integer,
+      accessToken: Option[String] = None,
       body: Option[UserVariable] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[UserVariable]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -145,7 +153,7 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -156,7 +164,9 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
   }
 
   
-  def userVariablesIdDelete(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+  def userVariablesIdDelete(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/userVariables/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -167,7 +177,7 @@ class UserVariableApi(client: TransportClient, config: SwaggerConfig) extends Ap
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 

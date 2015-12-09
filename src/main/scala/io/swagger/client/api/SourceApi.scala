@@ -1,8 +1,8 @@
 package io.swagger.client.api
 
-import io.swagger.client.model.Inline_response_200_13
+import io.swagger.client.model.Inline_response_200_17
 import io.swagger.client.model.Source
-import io.swagger.client.model.Inline_response_200_14
+import io.swagger.client.model.Inline_response_200_18
 import io.swagger.client.model.Inline_response_200_2
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
@@ -12,14 +12,15 @@ import collection.mutable
 class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def sourcesGet(clientId: Option[String] = None,
+  def sourcesGet(accessToken: Option[String] = None,
+      clientId: Option[String] = None,
       name: Option[String] = None,
       createdAt: Option[String] = None,
       updatedAt: Option[String] = None,
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[String] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_13]): Future[Inline_response_200_13] = {
+      )(implicit reader: ClientResponseReader[Inline_response_200_17]): Future[Inline_response_200_17] = {
     // create path and map variables
     val path = (addFmt("/sources"))
 
@@ -29,7 +30,7 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
 
     
 
-    if(clientId != null) clientId.foreach { v => queryParams += "client_id" -> v.toString }if(name != null) name.foreach { v => queryParams += "name" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(clientId != null) clientId.foreach { v => queryParams += "client_id" -> v.toString }if(name != null) name.foreach { v => queryParams += "name" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -40,8 +41,9 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
   }
 
   
-  def sourcesPost(body: Option[Source] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_14], writer: RequestWriter[Source]): Future[Inline_response_200_14] = {
+  def sourcesPost(accessToken: Option[String] = None,
+      body: Option[Source] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_18], writer: RequestWriter[Source]): Future[Inline_response_200_18] = {
     // create path and map variables
     val path = (addFmt("/sources"))
 
@@ -51,7 +53,7 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -62,7 +64,9 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
   }
 
   
-  def sourcesIdGet(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_14]): Future[Inline_response_200_14] = {
+  def sourcesIdGet(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_18]): Future[Inline_response_200_18] = {
     // create path and map variables
     val path = (addFmt("/sources/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -73,7 +77,7 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -85,6 +89,7 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
 
   
   def sourcesIdPut(id: Integer,
+      accessToken: Option[String] = None,
       body: Option[Source] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[Source]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -97,7 +102,7 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -108,7 +113,9 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
   }
 
   
-  def sourcesIdDelete(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+  def sourcesIdDelete(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/sources/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -119,7 +126,7 @@ class SourceApi(client: TransportClient, config: SwaggerConfig) extends ApiClien
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 

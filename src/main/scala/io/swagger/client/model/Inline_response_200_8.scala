@@ -4,7 +4,7 @@ import org.joda.time.DateTime
 
 
 case class Inline_response_200_8 (
-  data: Correlation,
+  data: Connector,
   success: Boolean
   
 )

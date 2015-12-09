@@ -1,8 +1,8 @@
 package io.swagger.client.api
 
-import io.swagger.client.model.Inline_response_200_29
+import io.swagger.client.model.Inline_response_200_33
 import io.swagger.client.model.Vote
-import io.swagger.client.model.Inline_response_200_30
+import io.swagger.client.model.Inline_response_200_34
 import io.swagger.client.model.Inline_response_200_2
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
@@ -12,7 +12,8 @@ import collection.mutable
 class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def votesGet(clientId: Option[String] = None,
+  def votesGet(accessToken: Option[String] = None,
+      clientId: Option[String] = None,
       userId: Option[Integer] = None,
       causeId: Option[Integer] = None,
       effectId: Option[Integer] = None,
@@ -22,7 +23,7 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[String] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_29]): Future[Inline_response_200_29] = {
+      )(implicit reader: ClientResponseReader[Inline_response_200_33]): Future[Inline_response_200_33] = {
     // create path and map variables
     val path = (addFmt("/votes"))
 
@@ -32,7 +33,7 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
 
     
 
-    if(clientId != null) clientId.foreach { v => queryParams += "client_id" -> v.toString }if(userId != null) userId.foreach { v => queryParams += "user_id" -> v.toString }if(causeId != null) causeId.foreach { v => queryParams += "cause_id" -> v.toString }if(effectId != null) effectId.foreach { v => queryParams += "effect_id" -> v.toString }if(value != null) value.foreach { v => queryParams += "value" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(clientId != null) clientId.foreach { v => queryParams += "client_id" -> v.toString }if(userId != null) userId.foreach { v => queryParams += "user_id" -> v.toString }if(causeId != null) causeId.foreach { v => queryParams += "cause_id" -> v.toString }if(effectId != null) effectId.foreach { v => queryParams += "effect_id" -> v.toString }if(value != null) value.foreach { v => queryParams += "value" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -43,8 +44,9 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
   }
 
   
-  def votesPost(body: Option[Vote] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_30], writer: RequestWriter[Vote]): Future[Inline_response_200_30] = {
+  def votesPost(accessToken: Option[String] = None,
+      body: Option[Vote] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_34], writer: RequestWriter[Vote]): Future[Inline_response_200_34] = {
     // create path and map variables
     val path = (addFmt("/votes"))
 
@@ -54,7 +56,7 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -65,7 +67,9 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
   }
 
   
-  def votesIdGet(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_30]): Future[Inline_response_200_30] = {
+  def votesIdGet(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_34]): Future[Inline_response_200_34] = {
     // create path and map variables
     val path = (addFmt("/votes/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -76,7 +80,7 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -88,6 +92,7 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
 
   
   def votesIdPut(id: Integer,
+      accessToken: Option[String] = None,
       body: Option[Vote] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[Vote]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -100,7 +105,7 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -111,7 +116,9 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
   }
 
   
-  def votesIdDelete(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+  def votesIdDelete(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/votes/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -122,7 +129,7 @@ class VoteApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 

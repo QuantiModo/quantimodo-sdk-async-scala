@@ -1,7 +1,7 @@
 package io.swagger.client.api
 
-import io.swagger.client.model.Inline_response_200_3
-import io.swagger.client.model.Inline_response_200_4
+import io.swagger.client.model.Inline_response_200_5
+import io.swagger.client.model.Inline_response_200_6
 import io.swagger.client.model.Connection
 import io.swagger.client.model.Inline_response_200_2
 import io.swagger.client._
@@ -12,7 +12,8 @@ import collection.mutable
 class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def connectionsGet(userId: Option[Integer] = None,
+  def connectionsGet(accessToken: Option[String] = None,
+      userId: Option[Integer] = None,
       connectorId: Option[Integer] = None,
       connectStatus: Option[String] = None,
       connectError: Option[String] = None,
@@ -25,7 +26,7 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[String] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_3]): Future[Inline_response_200_3] = {
+      )(implicit reader: ClientResponseReader[Inline_response_200_5]): Future[Inline_response_200_5] = {
     // create path and map variables
     val path = (addFmt("/connections"))
 
@@ -35,7 +36,7 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    if(userId != null) userId.foreach { v => queryParams += "user_id" -> v.toString }if(connectorId != null) connectorId.foreach { v => queryParams += "connector_id" -> v.toString }if(connectStatus != null) connectStatus.foreach { v => queryParams += "connect_status" -> v.toString }if(connectError != null) connectError.foreach { v => queryParams += "connect_error" -> v.toString }if(updateRequestedAt != null) updateRequestedAt.foreach { v => queryParams += "update_requested_at" -> v.toString }if(updateStatus != null) updateStatus.foreach { v => queryParams += "update_status" -> v.toString }if(updateError != null) updateError.foreach { v => queryParams += "update_error" -> v.toString }if(lastSuccessfulUpdatedAt != null) lastSuccessfulUpdatedAt.foreach { v => queryParams += "last_successful_updated_at" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(userId != null) userId.foreach { v => queryParams += "user_id" -> v.toString }if(connectorId != null) connectorId.foreach { v => queryParams += "connector_id" -> v.toString }if(connectStatus != null) connectStatus.foreach { v => queryParams += "connect_status" -> v.toString }if(connectError != null) connectError.foreach { v => queryParams += "connect_error" -> v.toString }if(updateRequestedAt != null) updateRequestedAt.foreach { v => queryParams += "update_requested_at" -> v.toString }if(updateStatus != null) updateStatus.foreach { v => queryParams += "update_status" -> v.toString }if(updateError != null) updateError.foreach { v => queryParams += "update_error" -> v.toString }if(lastSuccessfulUpdatedAt != null) lastSuccessfulUpdatedAt.foreach { v => queryParams += "last_successful_updated_at" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -46,8 +47,9 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
   }
 
   
-  def connectionsPost(body: Option[Connection] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_4], writer: RequestWriter[Connection]): Future[Inline_response_200_4] = {
+  def connectionsPost(accessToken: Option[String] = None,
+      body: Option[Connection] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_6], writer: RequestWriter[Connection]): Future[Inline_response_200_6] = {
     // create path and map variables
     val path = (addFmt("/connections"))
 
@@ -57,7 +59,7 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -68,7 +70,9 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
   }
 
   
-  def connectionsIdGet(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_4]): Future[Inline_response_200_4] = {
+  def connectionsIdGet(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_6]): Future[Inline_response_200_6] = {
     // create path and map variables
     val path = (addFmt("/connections/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -79,7 +83,7 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -91,6 +95,7 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
   
   def connectionsIdPut(id: Integer,
+      accessToken: Option[String] = None,
       body: Option[Connection] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[Connection]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -103,7 +108,7 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -114,7 +119,9 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
   }
 
   
-  def connectionsIdDelete(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+  def connectionsIdDelete(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/connections/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -125,7 +132,7 @@ class ConnectionApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 

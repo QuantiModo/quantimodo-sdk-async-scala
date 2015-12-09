@@ -1,9 +1,9 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.Number
-import io.swagger.client.model.Inline_response_200_23
+import io.swagger.client.model.Inline_response_200_27
 import io.swagger.client.model.VariableCategory
-import io.swagger.client.model.Inline_response_200_24
+import io.swagger.client.model.Inline_response_200_28
 import io.swagger.client.model.Inline_response_200_2
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
@@ -13,7 +13,8 @@ import collection.mutable
 class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def variableCategoriesGet(name: Option[String] = None,
+  def variableCategoriesGet(accessToken: Option[String] = None,
+      name: Option[String] = None,
       fillingValue: Option[Number] = None,
       maximumAllowedValue: Option[Number] = None,
       minimumAllowedValue: Option[Number] = None,
@@ -31,7 +32,7 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[String] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_23]): Future[Inline_response_200_23] = {
+      )(implicit reader: ClientResponseReader[Inline_response_200_27]): Future[Inline_response_200_27] = {
     // create path and map variables
     val path = (addFmt("/variableCategories"))
 
@@ -41,7 +42,7 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
 
     
 
-    if(name != null) name.foreach { v => queryParams += "name" -> v.toString }if(fillingValue != null) fillingValue.foreach { v => queryParams += "filling_value" -> v.toString }if(maximumAllowedValue != null) maximumAllowedValue.foreach { v => queryParams += "maximum_allowed_value" -> v.toString }if(minimumAllowedValue != null) minimumAllowedValue.foreach { v => queryParams += "minimum_allowed_value" -> v.toString }if(durationOfAction != null) durationOfAction.foreach { v => queryParams += "duration_of_action" -> v.toString }if(onsetDelay != null) onsetDelay.foreach { v => queryParams += "onset_delay" -> v.toString }if(combinationOperation != null) combinationOperation.foreach { v => queryParams += "combination_operation" -> v.toString }if(updated != null) updated.foreach { v => queryParams += "updated" -> v.toString }if(causeOnly != null) causeOnly.foreach { v => queryParams += "cause_only" -> v.toString }if(public != null) public.foreach { v => queryParams += "public" -> v.toString }if(outcome != null) outcome.foreach { v => queryParams += "outcome" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(imageUrl != null) imageUrl.foreach { v => queryParams += "image_url" -> v.toString }if(defaultUnitId != null) defaultUnitId.foreach { v => queryParams += "default_unit_id" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(name != null) name.foreach { v => queryParams += "name" -> v.toString }if(fillingValue != null) fillingValue.foreach { v => queryParams += "filling_value" -> v.toString }if(maximumAllowedValue != null) maximumAllowedValue.foreach { v => queryParams += "maximum_allowed_value" -> v.toString }if(minimumAllowedValue != null) minimumAllowedValue.foreach { v => queryParams += "minimum_allowed_value" -> v.toString }if(durationOfAction != null) durationOfAction.foreach { v => queryParams += "duration_of_action" -> v.toString }if(onsetDelay != null) onsetDelay.foreach { v => queryParams += "onset_delay" -> v.toString }if(combinationOperation != null) combinationOperation.foreach { v => queryParams += "combination_operation" -> v.toString }if(updated != null) updated.foreach { v => queryParams += "updated" -> v.toString }if(causeOnly != null) causeOnly.foreach { v => queryParams += "cause_only" -> v.toString }if(public != null) public.foreach { v => queryParams += "public" -> v.toString }if(outcome != null) outcome.foreach { v => queryParams += "outcome" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(imageUrl != null) imageUrl.foreach { v => queryParams += "image_url" -> v.toString }if(defaultUnitId != null) defaultUnitId.foreach { v => queryParams += "default_unit_id" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -52,8 +53,9 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
   }
 
   
-  def variableCategoriesPost(body: Option[VariableCategory] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_24], writer: RequestWriter[VariableCategory]): Future[Inline_response_200_24] = {
+  def variableCategoriesPost(accessToken: Option[String] = None,
+      body: Option[VariableCategory] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_28], writer: RequestWriter[VariableCategory]): Future[Inline_response_200_28] = {
     // create path and map variables
     val path = (addFmt("/variableCategories"))
 
@@ -63,7 +65,7 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -74,7 +76,9 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
   }
 
   
-  def variableCategoriesIdGet(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_24]): Future[Inline_response_200_24] = {
+  def variableCategoriesIdGet(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_28]): Future[Inline_response_200_28] = {
     // create path and map variables
     val path = (addFmt("/variableCategories/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -85,7 +89,7 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -97,6 +101,7 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
 
   
   def variableCategoriesIdPut(id: Integer,
+      accessToken: Option[String] = None,
       body: Option[VariableCategory] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[VariableCategory]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -109,7 +114,7 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -120,7 +125,9 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
   }
 
   
-  def variableCategoriesIdDelete(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+  def variableCategoriesIdDelete(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/variableCategories/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -131,7 +138,7 @@ class VariableCategoryApi(client: TransportClient, config: SwaggerConfig) extend
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 

@@ -13,7 +13,8 @@ import collection.mutable
 class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def aggregatedCorrelationsGet(correlation: Option[Number] = None,
+  def aggregatedCorrelationsGet(accessToken: Option[String] = None,
+      correlation: Option[Number] = None,
       causeId: Option[Integer] = None,
       effectId: Option[Integer] = None,
       onsetDelay: Option[Integer] = None,
@@ -22,7 +23,6 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
       valuePredictingHighOutcome: Option[Number] = None,
       valuePredictingLowOutcome: Option[Number] = None,
       optimalPearsonProduct: Option[Number] = None,
-      vote: Option[Number] = None,
       numberOfUsers: Option[Integer] = None,
       numberOfCorrelations: Option[Integer] = None,
       statisticalSignificance: Option[Number] = None,
@@ -51,7 +51,7 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
 
     
 
-    if(correlation != null) correlation.foreach { v => queryParams += "correlation" -> v.toString }if(causeId != null) causeId.foreach { v => queryParams += "cause_id" -> v.toString }if(effectId != null) effectId.foreach { v => queryParams += "effect_id" -> v.toString }if(onsetDelay != null) onsetDelay.foreach { v => queryParams += "onset_delay" -> v.toString }if(durationOfAction != null) durationOfAction.foreach { v => queryParams += "duration_of_action" -> v.toString }if(numberOfPairs != null) numberOfPairs.foreach { v => queryParams += "number_of_pairs" -> v.toString }if(valuePredictingHighOutcome != null) valuePredictingHighOutcome.foreach { v => queryParams += "value_predicting_high_outcome" -> v.toString }if(valuePredictingLowOutcome != null) valuePredictingLowOutcome.foreach { v => queryParams += "value_predicting_low_outcome" -> v.toString }if(optimalPearsonProduct != null) optimalPearsonProduct.foreach { v => queryParams += "optimal_pearson_product" -> v.toString }if(vote != null) vote.foreach { v => queryParams += "vote" -> v.toString }if(numberOfUsers != null) numberOfUsers.foreach { v => queryParams += "number_of_users" -> v.toString }if(numberOfCorrelations != null) numberOfCorrelations.foreach { v => queryParams += "number_of_correlations" -> v.toString }if(statisticalSignificance != null) statisticalSignificance.foreach { v => queryParams += "statistical_significance" -> v.toString }if(causeUnit != null) causeUnit.foreach { v => queryParams += "cause_unit" -> v.toString }if(causeUnitId != null) causeUnitId.foreach { v => queryParams += "cause_unit_id" -> v.toString }if(causeChanges != null) causeChanges.foreach { v => queryParams += "cause_changes" -> v.toString }if(effectChanges != null) effectChanges.foreach { v => queryParams += "effect_changes" -> v.toString }if(aggregateQmScore != null) aggregateQmScore.foreach { v => queryParams += "aggregate_qm_score" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(status != null) status.foreach { v => queryParams += "status" -> v.toString }if(errorMessage != null) errorMessage.foreach { v => queryParams += "error_message" -> v.toString }if(lastSuccessfulUpdateTime != null) lastSuccessfulUpdateTime.foreach { v => queryParams += "last_successful_update_time" -> v.toString }if(reversePearsonCorrelationCoefficient != null) reversePearsonCorrelationCoefficient.foreach { v => queryParams += "reverse_pearson_correlation_coefficient" -> v.toString }if(predictivePearsonCorrelationCoefficient != null) predictivePearsonCorrelationCoefficient.foreach { v => queryParams += "predictive_pearson_correlation_coefficient" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(correlation != null) correlation.foreach { v => queryParams += "correlation" -> v.toString }if(causeId != null) causeId.foreach { v => queryParams += "cause_id" -> v.toString }if(effectId != null) effectId.foreach { v => queryParams += "effect_id" -> v.toString }if(onsetDelay != null) onsetDelay.foreach { v => queryParams += "onset_delay" -> v.toString }if(durationOfAction != null) durationOfAction.foreach { v => queryParams += "duration_of_action" -> v.toString }if(numberOfPairs != null) numberOfPairs.foreach { v => queryParams += "number_of_pairs" -> v.toString }if(valuePredictingHighOutcome != null) valuePredictingHighOutcome.foreach { v => queryParams += "value_predicting_high_outcome" -> v.toString }if(valuePredictingLowOutcome != null) valuePredictingLowOutcome.foreach { v => queryParams += "value_predicting_low_outcome" -> v.toString }if(optimalPearsonProduct != null) optimalPearsonProduct.foreach { v => queryParams += "optimal_pearson_product" -> v.toString }if(numberOfUsers != null) numberOfUsers.foreach { v => queryParams += "number_of_users" -> v.toString }if(numberOfCorrelations != null) numberOfCorrelations.foreach { v => queryParams += "number_of_correlations" -> v.toString }if(statisticalSignificance != null) statisticalSignificance.foreach { v => queryParams += "statistical_significance" -> v.toString }if(causeUnit != null) causeUnit.foreach { v => queryParams += "cause_unit" -> v.toString }if(causeUnitId != null) causeUnitId.foreach { v => queryParams += "cause_unit_id" -> v.toString }if(causeChanges != null) causeChanges.foreach { v => queryParams += "cause_changes" -> v.toString }if(effectChanges != null) effectChanges.foreach { v => queryParams += "effect_changes" -> v.toString }if(aggregateQmScore != null) aggregateQmScore.foreach { v => queryParams += "aggregate_qm_score" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(status != null) status.foreach { v => queryParams += "status" -> v.toString }if(errorMessage != null) errorMessage.foreach { v => queryParams += "error_message" -> v.toString }if(lastSuccessfulUpdateTime != null) lastSuccessfulUpdateTime.foreach { v => queryParams += "last_successful_update_time" -> v.toString }if(reversePearsonCorrelationCoefficient != null) reversePearsonCorrelationCoefficient.foreach { v => queryParams += "reverse_pearson_correlation_coefficient" -> v.toString }if(predictivePearsonCorrelationCoefficient != null) predictivePearsonCorrelationCoefficient.foreach { v => queryParams += "predictive_pearson_correlation_coefficient" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -62,7 +62,8 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
   }
 
   
-  def aggregatedCorrelationsPost(body: Option[AggregatedCorrelation] = None
+  def aggregatedCorrelationsPost(accessToken: Option[String] = None,
+      body: Option[AggregatedCorrelation] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_1], writer: RequestWriter[AggregatedCorrelation]): Future[Inline_response_200_1] = {
     // create path and map variables
     val path = (addFmt("/aggregatedCorrelations"))
@@ -73,7 +74,7 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -84,7 +85,9 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
   }
 
   
-  def aggregatedCorrelationsIdGet(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_1]): Future[Inline_response_200_1] = {
+  def aggregatedCorrelationsIdGet(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_1]): Future[Inline_response_200_1] = {
     // create path and map variables
     val path = (addFmt("/aggregatedCorrelations/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -95,7 +98,7 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -107,6 +110,7 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
 
   
   def aggregatedCorrelationsIdPut(id: Integer,
+      accessToken: Option[String] = None,
       body: Option[AggregatedCorrelation] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[AggregatedCorrelation]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -119,7 +123,7 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -130,7 +134,9 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
   }
 
   
-  def aggregatedCorrelationsIdDelete(id: Integer)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+  def aggregatedCorrelationsIdDelete(id: Integer,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/aggregatedCorrelations/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -141,7 +147,7 @@ class AggregatedCorrelationApi(client: TransportClient, config: SwaggerConfig) e
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 

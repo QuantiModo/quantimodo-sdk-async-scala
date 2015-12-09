@@ -1,8 +1,8 @@
 package io.swagger.client.api
 
-import io.swagger.client.model.Inline_response_200_9
+import io.swagger.client.model.Inline_response_200_11
 import io.swagger.client.model.Credential
-import io.swagger.client.model.Inline_response_200_10
+import io.swagger.client.model.Inline_response_200_12
 import io.swagger.client.model.Inline_response_200_2
 import io.swagger.client._
 import scala.concurrent.{ Future, Await }
@@ -12,7 +12,9 @@ import collection.mutable
 class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   
-  def credentialsGet(connectorId: Option[Boolean] = None,
+  def credentialsGet(accessToken: Option[String] = None,
+      userId: Option[Integer] = None,
+      connectorId: Option[Integer] = None,
       attrKey: Option[String] = None,
       attrValue: Option[String] = None,
       createdAt: Option[String] = None,
@@ -20,7 +22,7 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
       limit: Option[Integer] = None,
       offset: Option[Integer] = None,
       sort: Option[String] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_9]): Future[Inline_response_200_9] = {
+      )(implicit reader: ClientResponseReader[Inline_response_200_11]): Future[Inline_response_200_11] = {
     // create path and map variables
     val path = (addFmt("/credentials"))
 
@@ -30,7 +32,7 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    if(connectorId != null) connectorId.foreach { v => queryParams += "connector_id" -> v.toString }if(attrKey != null) attrKey.foreach { v => queryParams += "attr_key" -> v.toString }if(attrValue != null) attrValue.foreach { v => queryParams += "attr_value" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }if(userId != null) userId.foreach { v => queryParams += "user_id" -> v.toString }if(connectorId != null) connectorId.foreach { v => queryParams += "connector_id" -> v.toString }if(attrKey != null) attrKey.foreach { v => queryParams += "attr_key" -> v.toString }if(attrValue != null) attrValue.foreach { v => queryParams += "attr_value" -> v.toString }if(createdAt != null) createdAt.foreach { v => queryParams += "created_at" -> v.toString }if(updatedAt != null) updatedAt.foreach { v => queryParams += "updated_at" -> v.toString }if(limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }if(offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }if(sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
 
     
 
@@ -41,8 +43,9 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
   }
 
   
-  def credentialsPost(body: Option[Credential] = None
-      )(implicit reader: ClientResponseReader[Inline_response_200_10], writer: RequestWriter[Credential]): Future[Inline_response_200_10] = {
+  def credentialsPost(accessToken: Option[String] = None,
+      body: Option[Credential] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_12], writer: RequestWriter[Credential]): Future[Inline_response_200_12] = {
     // create path and map variables
     val path = (addFmt("/credentials"))
 
@@ -52,7 +55,7 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
     
 
@@ -64,7 +67,9 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
   
   def credentialsIdGet(id: Integer,
-      attrKey: String)(implicit reader: ClientResponseReader[Inline_response_200_10]): Future[Inline_response_200_10] = {
+      attrKey: String,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_12]): Future[Inline_response_200_12] = {
     // create path and map variables
     val path = (addFmt("/credentials/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -75,7 +80,7 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
     if(attrKey != null)   queryParams += "attrKey" -> attrKey.toString
 
     
@@ -89,6 +94,7 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
   
   def credentialsIdPut(id: Integer,
       attrKey: String,
+      accessToken: Option[String] = None,
       body: Option[Credential] = None
       )(implicit reader: ClientResponseReader[Inline_response_200_2], writer: RequestWriter[Credential]): Future[Inline_response_200_2] = {
     // create path and map variables
@@ -101,7 +107,7 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
     if(attrKey != null)   queryParams += "attrKey" -> attrKey.toString
 
     
@@ -114,7 +120,9 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
   
   def credentialsIdDelete(id: Integer,
-      attrKey: String)(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
+      attrKey: String,
+      accessToken: Option[String] = None
+      )(implicit reader: ClientResponseReader[Inline_response_200_2]): Future[Inline_response_200_2] = {
     // create path and map variables
     val path = (addFmt("/credentials/{id}")
         replaceAll ("\\{" + "id" + "\\}",id.toString))
@@ -125,7 +133,7 @@ class CredentialApi(client: TransportClient, config: SwaggerConfig) extends ApiC
 
     
 
-    
+    if(accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
     if(attrKey != null)   queryParams += "attrKey" -> attrKey.toString
 
     

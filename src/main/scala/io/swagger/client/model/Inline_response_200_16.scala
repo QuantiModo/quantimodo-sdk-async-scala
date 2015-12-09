@@ -4,7 +4,7 @@ import org.joda.time.DateTime
 
 
 case class Inline_response_200_16 (
-  data: UnitCategory,
+  data: List[UserVariable],
   success: Boolean
   
 )
