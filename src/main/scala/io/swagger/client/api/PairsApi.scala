@@ -1,45 +1,63 @@
 package io.swagger.client.api
 
+import io.swagger.client.model.Pairs
 import com.wordnik.swagger.client._
-import scala.concurrent.{ Future, Await }
-import scala.concurrent.duration._
+import scala.concurrent.Future
 import collection.mutable
 
 class PairsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  
-  def pairsGet(cause: String,
+  def v1PairsCsvGet(cause: String,
       effect: String,
-      duration: String,
-      delay: String,
-      startTime: String,
-      endTime: String,
-      causeSource: String,
-      effectSource: String,
-      causeUnit: String,
-      effectUnit: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+      accessToken: Option[String] = None,
+      causeSource: Option[String] = None,
+      causeUnit: Option[String] = None,
+      delay: Option[String] = None,
+      duration: Option[String] = None,
+      effectSource: Option[String] = None,
+      effectUnit: Option[String] = None,
+      endTime: Option[String] = None,
+      startTime: Option[String] = None,
+      limit: Option[Integer] = None,
+      offset: Option[Integer] = None,
+      sort: Option[Integer] = None
+      )(implicit reader: ClientResponseReader[List[Pairs]]): Future[List[Pairs]] = {
     // create path and map variables
-    val path = (addFmt("/pairs"))
+    val path = (addFmt("/v1/pairsCsv"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    
+    if (accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
 
-    
-    if(cause != null)   queryParams += "cause" -> cause.toString
-    if(effect != null)   queryParams += "effect" -> effect.toString
-    if(duration != null)   queryParams += "duration" -> duration.toString
-    if(delay != null)   queryParams += "delay" -> delay.toString
-    if(startTime != null)   queryParams += "startTime" -> startTime.toString
-    if(endTime != null)   queryParams += "endTime" -> endTime.toString
-    if(causeSource != null)   queryParams += "causeSource" -> causeSource.toString
-    if(effectSource != null)   queryParams += "effectSource" -> effectSource.toString
-    if(causeUnit != null)   queryParams += "causeUnit" -> causeUnit.toString
-    if(effectUnit != null)   queryParams += "effectUnit" -> effectUnit.toString
+    if (cause != null) queryParams += "cause" -> cause.toString
 
-    
+    if (causeSource != null) causeSource.foreach { v => queryParams += "causeSource" -> v.toString }
+
+    if (causeUnit != null) causeUnit.foreach { v => queryParams += "causeUnit" -> v.toString }
+
+    if (delay != null) delay.foreach { v => queryParams += "delay" -> v.toString }
+
+    if (duration != null) duration.foreach { v => queryParams += "duration" -> v.toString }
+
+    if (effect != null) queryParams += "effect" -> effect.toString
+
+    if (effectSource != null) effectSource.foreach { v => queryParams += "effectSource" -> v.toString }
+
+    if (effectUnit != null) effectUnit.foreach { v => queryParams += "effectUnit" -> v.toString }
+
+    if (endTime != null) endTime.foreach { v => queryParams += "endTime" -> v.toString }
+
+    if (startTime != null) startTime.foreach { v => queryParams += "startTime" -> v.toString }
+
+    if (limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }
+
+    if (offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }
+
+    if (sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+
+
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
@@ -47,6 +65,63 @@ class PairsApi(client: TransportClient, config: SwaggerConfig) extends ApiClient
     }
   }
 
-  
+  def v1PairsGet(cause: String,
+      effect: String,
+      accessToken: Option[String] = None,
+      causeSource: Option[String] = None,
+      causeUnit: Option[String] = None,
+      delay: Option[String] = None,
+      duration: Option[String] = None,
+      effectSource: Option[String] = None,
+      effectUnit: Option[String] = None,
+      endTime: Option[String] = None,
+      startTime: Option[String] = None,
+      limit: Option[Integer] = None,
+      offset: Option[Integer] = None,
+      sort: Option[Integer] = None
+      )(implicit reader: ClientResponseReader[List[Pairs]]): Future[List[Pairs]] = {
+    // create path and map variables
+    val path = (addFmt("/v1/pairs"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (accessToken != null) accessToken.foreach { v => queryParams += "access_token" -> v.toString }
+
+    if (cause != null) queryParams += "cause" -> cause.toString
+
+    if (causeSource != null) causeSource.foreach { v => queryParams += "causeSource" -> v.toString }
+
+    if (causeUnit != null) causeUnit.foreach { v => queryParams += "causeUnit" -> v.toString }
+
+    if (delay != null) delay.foreach { v => queryParams += "delay" -> v.toString }
+
+    if (duration != null) duration.foreach { v => queryParams += "duration" -> v.toString }
+
+    if (effect != null) queryParams += "effect" -> effect.toString
+
+    if (effectSource != null) effectSource.foreach { v => queryParams += "effectSource" -> v.toString }
+
+    if (effectUnit != null) effectUnit.foreach { v => queryParams += "effectUnit" -> v.toString }
+
+    if (endTime != null) endTime.foreach { v => queryParams += "endTime" -> v.toString }
+
+    if (startTime != null) startTime.foreach { v => queryParams += "startTime" -> v.toString }
+
+    if (limit != null) limit.foreach { v => queryParams += "limit" -> v.toString }
+
+    if (offset != null) offset.foreach { v => queryParams += "offset" -> v.toString }
+
+    if (sort != null) sort.foreach { v => queryParams += "sort" -> v.toString }
+
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
 
 }
