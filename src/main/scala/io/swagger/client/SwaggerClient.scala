@@ -14,23 +14,31 @@ class SwaggerClient(config: SwaggerConfig) extends Closeable {
 
   protected def transportClient: TransportClient = new RestClient(config)
   
-  val user = new UserApi(client, config)
+  val applicationEndpoints = new ApplicationEndpointsApi(client, config)
+  
+  val authentication = new AuthenticationApi(client, config)
   
   val connectors = new ConnectorsApi(client, config)
   
+  val correlations = new CorrelationsApi(client, config)
+  
   val measurements = new MeasurementsApi(client, config)
   
-  val variables = new VariablesApi(client, config)
-  
-  val units = new UnitsApi(client, config)
-  
-  val oauth = new OauthApi(client, config)
-  
-  val correlations = new CorrelationsApi(client, config)
+  val organizations = new OrganizationsApi(client, config)
   
   val pairs = new PairsApi(client, config)
   
-  val sharing = new SharingApi(client, config)
+  val reminders = new RemindersApi(client, config)
+  
+  val tags = new TagsApi(client, config)
+  
+  val units = new UnitsApi(client, config)
+  
+  val user = new UserApi(client, config)
+  
+  val variables = new VariablesApi(client, config)
+  
+  val votes = new VotesApi(client, config)
   
 
   def close() {
